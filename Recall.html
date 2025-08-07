@@ -8,13 +8,13 @@
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body 
-  class="bg-neutral-900 flex flex-col items-center justify-center min-h-screen" 
+  class="bg-neutral-900 flex flex-col items-center min-h-screen" 
   x-data="animatedTitle()" 
   x-init="init()"
 >
 
   <!-- Subtile animierte Überschrift -->
-  <h1 class="text-4xl font-mono text-white mt-16 mb-16 flex space-x-1 select-none">
+  <h1 class="text-4xl font-bold text-white mb-8 flex space-x-1 select-none">
     <template x-for="(letter, index) in 'Asisza X'.split('')" :key="index">
       <span 
         x-text="letter"
@@ -28,12 +28,8 @@
     </template>
   </h1>
 
-  <h2 class="text-green-500 font-mono text-xl mb-16">
-  Your Software Development Freelancer
-</h2>
-
-  <!-- Wrapper für 3 Bereiche mit Abstand -->
-  <div class="space-y-8 w-full flex flex-col items-center p-4">
+  <!-- Wrapper für 3 Bereiche mit Abstand und Padding -->
+  <div class="space-y-8 w-full flex flex-col items-center px-4 md:px-6 mb-24">
 
     <!-- Bereich 1 -->
     <div 
@@ -58,7 +54,7 @@
       >
         <div class="flex justify-between items-center">
           <p class="text-gray-700 text-sm">
-            Software Development.
+            Dies ist ein informativer Text. Du kannst hier erste wichtige Infos anzeigen.
           </p>
           <button 
             @click.stop="
@@ -88,7 +84,8 @@
         <div class="md:flex md:gap-4">
           <div class="flex-1">
             <p class="text-gray-700 text-sm">
-              1001.
+              Dies ist der erweiterte Informationsbereich.  
+              Hier kannst du mehr Details anzeigen, z. B. Beschreibung, technische Daten oder weiterführende Links.
             </p>
           </div>
         </div>
@@ -117,7 +114,7 @@
       <!-- Bild -->
       <template x-if="showImage">
         <img 
-          src="UX Design.jpg" 
+          src="612.jpg" 
           alt="Beispielbild" 
           class="w-full h-48 md:h-64 object-cover cursor-pointer"
           @mouseenter="showInfo = true"
@@ -131,7 +128,7 @@
       >
         <div class="flex justify-between items-center">
           <p class="text-gray-700 text-sm">
-            UI / UX Design.
+            Dies ist ein informativer Text. Du kannst hier erste wichtige Infos anzeigen.
           </p>
           <button 
             @click.stop="
@@ -161,7 +158,8 @@
         <div class="md:flex md:gap-4">
           <div class="flex-1">
             <p class="text-gray-700 text-sm">
-              1010.
+              Dies ist der erweiterte Informationsbereich.  
+              Hier kannst du mehr Details anzeigen, z. B. Beschreibung, technische Daten oder weiterführende Links.
             </p>
           </div>
         </div>
@@ -190,7 +188,7 @@
       <!-- Bild -->
       <template x-if="showImage">
         <img 
-          src="Marketing.jpg" 
+          src="612.jpg" 
           alt="Beispielbild" 
           class="w-full h-48 md:h-64 object-cover cursor-pointer"
           @mouseenter="showInfo = true"
@@ -204,7 +202,7 @@
       >
         <div class="flex justify-between items-center">
           <p class="text-gray-700 text-sm">
-            Online Marketing.
+            Dies ist ein informativer Text. Du kannst hier erste wichtige Infos anzeigen.
           </p>
           <button 
             @click.stop="
@@ -234,7 +232,8 @@
         <div class="md:flex md:gap-4">
           <div class="flex-1">
             <p class="text-gray-700 text-sm">
-              1100.
+              Dies ist der erweiterte Informationsbereich.  
+              Hier kannst du mehr Details anzeigen, z. B. Beschreibung, technische Daten oder weiterführende Links.
             </p>
           </div>
         </div>
@@ -256,35 +255,34 @@
 
   </div>
 
-<footer class="w-full bg-gray-900 text-gray-400 py-12 border-t border-gray-700 mt-16"
-        x-data="animatedFooterTitle()" 
-        x-init="observeFooter($el)">
+  <footer class="w-full bg-gray-900 text-gray-400 py-12 border-t border-gray-700"
+          x-data="animatedFooterTitle()" 
+          x-init="observeFooter($el)">
 
-  <div class="max-w-5xl mx-auto px-6 flex flex-col items-center space-y-6">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col items-center space-y-6">
 
-    <!-- Branding -->
-    <h2 class="font-mono text-base tracking-wide select-none flex space-x-1">
-      <template x-for="(letter, index) in footerText.split('')" :key="index">
-        <span 
-          x-text="letter"
-          x-show="visible[index]"
-          x-transition:enter="transition ease-out duration-400"
-          x-transition:enter-start="opacity-0 translate-y-1"
-          x-transition:enter-end="opacity-100 translate-y-0"
-          class="inline-block"
-        ></span>
-      </template>
-    </h2>
+      <!-- Branding -->
+      <h2 class="font-mono text-base tracking-wide select-none flex space-x-1">
+        <template x-for="(letter, index) in footerText.split('')" :key="index">
+          <span 
+            x-text="letter"
+            x-show="visible[index]"
+            x-transition:enter="transition ease-out duration-400"
+            x-transition:enter-start="opacity-0 translate-y-1"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            class="inline-block"
+          ></span>
+        </template>
+      </h2>
 
-    <!-- Navigation unter Branding -->
-    <nav class="flex space-x-8 text-sm font-light">
-      <a href="#" class="text-gray-400">Impressum</a>
-      <a href="#" class="text-gray-400">Datenschutz</a>
-    </nav>
+      <!-- Navigation unter Branding -->
+      <nav class="flex space-x-8 text-sm font-light">
+        <a href="#" class="text-gray-400">Impressum</a>
+        <a href="#" class="text-gray-400">Datenschutz</a>
+      </nav>
 
-  </div>
-</footer>
-
+    </div>
+  </footer>
 
 
   <!-- Alpine.js Animationen -->
@@ -293,44 +291,47 @@
       Alpine.data('animatedTitle', () => ({
         visible: [],
         init() {
-          const letters = 'Asisza X'.split('');
-          this.visible = letters.map(() => false);
-          letters.forEach((_, i) => {
-            setTimeout(() => {
-              this.visible[i] = true;
-            }, i * 250);
-          });
+          this.visible = Array.from({length: 'Asisza X'.length}, () => false);
+          this.animate();
+        },
+        animate() {
+          this.visible.forEach((v, i) => this.visible[i] = false);
+          this.visible = Array.from({length: 'Asisza X'.length}, () => false);
+          let delay = 0;
+          for(let i = 0; i < this.visible.length; i++) {
+            setTimeout(() => { this.visible[i] = true }, delay);
+            delay += 150;
+          }
         }
       }));
 
       Alpine.data('animatedFooterTitle', () => ({
-        footerText: '© Asisza X. alle Rechte vorbehalten',
         visible: [],
-        animationStarted: false,
+        footerText: 'Asisza X',
         init() {
-          // Setze alle Buchstaben unsichtbar, Animation startet erst beim Scrollen
-          this.visible = this.footerText.split('').map(() => false);
-        },
-        observeFooter(el) {
-          const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting && !this.animationStarted) {
-                this.animationStarted = true;
-                this.footerText.split('').forEach((_, i) => {
-                  setTimeout(() => {
-                    this.visible[i] = true;
-                  }, i * 250);
-                });
-                observer.unobserve(el);
-              }
-            });
-          }, {
-            root: null,
-            threshold: 0.1
-          });
-          observer.observe(el);
+          this.visible = Array.from({length: this.footerText.length}, () => false);
         }
       }));
+
+      window.observeFooter = (el) => {
+        const data = Alpine.store('animatedFooterTitle');
+        if (!data) return;
+        const footer = el;
+        const footerData = footer.__x.$data;
+        let index = 0;
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting) {
+              let delay = 0;
+              for(let i = 0; i < footerData.footerText.length; i++) {
+                setTimeout(() => footerData.visible[i] = true, delay);
+                delay += 150;
+              }
+            }
+          });
+        });
+        observer.observe(footer);
+      };
     });
   </script>
 

@@ -13,7 +13,6 @@
       font-weight: 600;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      word-break: break-word;
     }
     @media (min-width: 640px) {
       .headline {
@@ -25,7 +24,6 @@
       font-weight: 500;
       letter-spacing: 0.125em;
       text-transform: uppercase;
-      word-break: break-word;
     }
     @media (min-width: 640px) {
       .subheadline {
@@ -41,26 +39,19 @@
 >
 
   <!-- Header mit animiertem Titel -->
-  <header class="w-full py-12 flex flex-col items-center px-4 text-center">
-    <h1 class="headline font-mono text-white mb-6 flex flex-wrap justify-center select-none">
-      <template x-for="(letter, index) in title.split('')" :key="index">
+  <header class="w-full py-12 flex flex-col items-center">
+    <h1 class="headline font-mono text-white mb-6 flex space-x-1 select-none">
+      <template x-for="(letter, index) in 'Dein Portfolio'.split('')" :key="index">
         <span 
           x-text="letter"
           x-show="visible[index]"
-          x-transition:enter="transition ease-out duration-500"
+          x-transition:enter="transition ease-out duration-600"
           x-transition:enter-start="opacity-0 scale-95"
           x-transition:enter-end="opacity-100 scale-100"
           class="inline-block"
         ></span>
       </template>
     </h1>
-
-    <!-- Intro Text in Weiß -->
-    <p class="text-gray-200 font-mono mb-3 text-sm sm:text-base max-w-xl">
-      Willkommen in meinem Portfolio! Hier findest du ausgewählte Projekte, die meine Arbeit als Entwickler zeigen.
-    </p>
-
-    <!-- Subheadline -->
     <p class="subheadline text-green-400 font-mono text-center">
       Frontend Developer • HTML • TailwindCSS • JavaScript
     </p>
@@ -193,7 +184,7 @@
 
     <div class="max-w-5xl mx-auto px-6 flex flex-col items-center space-y-6">
 
-      <h2 class="font-mono text-sm sm:text-base tracking-widest select-none flex flex-wrap justify-center text-gray-400 uppercase text-center">
+      <h2 class="font-mono text-sm sm:text-base tracking-widest select-none flex space-x-1 text-gray-400 uppercase">
         <template x-for="(letter, index) in footerText.split('')" :key="index">
           <span 
             x-text="letter"
@@ -206,7 +197,7 @@
         </template>
       </h2>
 
-      <nav class="flex flex-wrap justify-center gap-6 text-xs font-light tracking-widest uppercase">
+      <nav class="flex space-x-8 text-xs font-light tracking-widest uppercase">
         <a href="#" class="text-gray-400 hover:text-green-400 transition">Impressum</a>
         <a href="#" class="text-gray-400 hover:text-green-400 transition">Datenschutz</a>
       </nav>
@@ -218,10 +209,9 @@
   <script>
     document.addEventListener('alpine:init', () => {
       Alpine.data('animatedTitle', () => ({
-        title: 'Dein Portfolio',
         visible: [],
         init() {
-          const letters = this.title.split('');
+          const letters = 'Dein Portfolio'.split('');
           this.visible = letters.map(() => false);
           letters.forEach((_, i) => {
             setTimeout(() => {
@@ -259,3 +249,9 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+

@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Info mit Expand</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body 
+  class="bg-neutral-900 flex flex-col items-center justify-center min-h-screen" 
+  x-data="animatedTitle()" 
+  x-init="init()"
+>
+
+  <!-- Subtile animierte Überschrift -->
+  <h1 class="text-4xl font-mono text-white mt-16 mb-16 flex space-x-1 select-none">
+    <template x-for="(letter, index) in 'Asisza X'.split('')" :key="index">
+      <span 
+        x-text="letter"
+        x-show="visible[index]"
+        x-transition:enter="transition ease-out duration-600"
+        x-transition:enter-start="opacity-0 scale-95"
+        x-transition:enter-end="opacity-100 scale-100"
+        class="inline-block"
+        style="display: inline-block;"
+      ></span>
+    </template>
+  </h1>
+
+  <h2 class="text-green-500 text-center font-mono text-xl mb-16">
+  Your Software Development Freelancer
+</h2>
+
+  <!-- Wrapper für 3 Bereiche mit Abstand -->
+  <div class="space-y-8 w-full flex flex-col items-center p-4">
+
+    <!-- Bereich 1 -->
+    <div 
+      x-data="{ showInfo: false, showMore: false, showImage: true }"
+      @click.away="showInfo = false; showMore = false"
+      class="w-full max-w-md md:max-w-3xl bg-neutral-900 rounded-lg overflow-hidden"
+    >
+      <!-- Bild -->
+      <template x-if="showImage">
+        <img 
+          src="612.jpg" 
+          alt="Beispielbild" 
+          class="w-full h-48 md:h-64 object-cover cursor-pointer"
+          @mouseenter="showInfo = true"
+        >
+      </template>
+
+      <!-- Info-Text mit Button -->
+      <div 
+        class="overflow-hidden bg-gray-50"
+        :class="showInfo ? 'max-h-40 p-4 transition-all duration-300' : 'max-h-0 p-0'"
+      >
+        <div class="flex justify-between items-center">
+          <p class="text-gray-700 text-sm">
+            Software Development.
+          </p>
+          <button 
+            @click.stop="
+              if(showMore) { 
+                showMore = false; 
+                showInfo = false; 
+                showImage = false; 
+              } else { 
+                showMore = true; 
+                showInfo = true; 
+                showImage = true; 
+              }
+            "
+            class="bg-blue-500 hover:bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center transition"
+          >
+            <span x-show="!showMore">+</span>
+            <span x-show="showMore">−</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Erweiterter Bereich -->
+      <div 
+        class="overflow-hidden bg-gray-100"
+        :class="showMore ? 'max-h-screen p-4 transition-all duration-300' : 'max-h-0 p-0'"
+      >
+        <div class="md:flex md:gap-4">
+          <div class="flex-1">
+            <p class="text-gray-700 text-sm">
+              1001.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Button zum Bild wieder öffnen -->
+      <div 
+        x-show="!showImage" 
+        class="p-4 text-center"
+      >
+        <button 
+          @click="showImage = true"
+          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
+        >
+          anzeigen
+        </button>
+      </div>
+    </div>
+
+    <!-- Bereich 2 (identisch) -->
+    <div 
+      x-data="{ showInfo: false, showMore: false, showImage: true }"
+      @click.away="showInfo = false; showMore = false"
+      class="w-full max-w-md md:max-w-3xl bg-neutral-900 rounded-lg overflow-hidden"
+    >
+      <!-- Bild -->
+      <template x-if="showImage">
+        <img 
+          src="612.jpg" 
+          alt="Beispielbild" 
+          class="w-full h-48 md:h-64 object-cover cursor-pointer"
+          @mouseenter="showInfo = true"
+        >
+      </template>
+
+      <!-- Info-Text mit Button -->
+      <div 
+        class="overflow-hidden bg-gray-50"
+        :class="showInfo ? 'max-h-40 p-4 transition-all duration-300' : 'max-h-0 p-0'"
+      >
+        <div class="flex justify-between items-center">
+          <p class="text-gray-700 text-sm">
+            UI / UX Design.
+          </p>
+          <button 
+            @click.stop="
+              if(showMore) { 
+                showMore = false; 
+                showInfo = false; 
+                showImage = false; 
+              } else { 
+                showMore = true; 
+                showInfo = true; 
+                showImage = true; 
+              }
+            "
+            class="bg-blue-500 hover:bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center transition"
+          >
+            <span x-show="!showMore">+</span>
+            <span x-show="showMore">−</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Erweiterter Bereich -->
+      <div 
+        class="overflow-hidden bg-gray-100"
+        :class="showMore ? 'max-h-screen p-4 transition-all duration-300' : 'max-h-0 p-0'"
+      >
+        <div class="md:flex md:gap-4">
+          <div class="flex-1">
+            <p class="text-gray-700 text-sm">
+              1010.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Button zum Bild wieder öffnen -->
+      <div 
+        x-show="!showImage" 
+        class="p-4 text-center"
+      >
+        <button 
+          @click="showImage = true"
+          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
+        >
+          anzeigen
+        </button>
+      </div>
+    </div>
+
+    <!-- Bereich 3 (identisch) -->
+    <div 
+      x-data="{ showInfo: false, showMore: false, showImage: true }"
+      @click.away="showInfo = false; showMore = false"
+      class="w-full max-w-md md:max-w-3xl bg-neutral-900 rounded-lg overflow-hidden"
+    >
+      <!-- Bild -->
+      <template x-if="showImage">
+        <img 
+          src="612.jpg" 
+          alt="Beispielbild" 
+          class="w-full h-48 md:h-64 object-cover cursor-pointer"
+          @mouseenter="showInfo = true"
+        >
+      </template>
+
+      <!-- Info-Text mit Button -->
+      <div 
+        class="overflow-hidden bg-gray-50"
+        :class="showInfo ? 'max-h-40 p-4 transition-all duration-300' : 'max-h-0 p-0'"
+      >
+        <div class="flex justify-between items-center">
+          <p class="text-gray-700 text-sm">
+            Online Marketing.
+          </p>
+          <button 
+            @click.stop="
+              if(showMore) { 
+                showMore = false; 
+                showInfo = false; 
+                showImage = false; 
+              } else { 
+                showMore = true; 
+                showInfo = true; 
+                showImage = true; 
+              }
+            "
+            class="bg-blue-500 hover:bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center transition"
+          >
+            <span x-show="!showMore">+</span>
+            <span x-show="showMore">−</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Erweiterter Bereich -->
+      <div 
+        class="overflow-hidden bg-gray-100"
+        :class="showMore ? 'max-h-screen p-4 transition-all duration-300' : 'max-h-0 p-0'"
+      >
+        <div class="md:flex md:gap-4">
+          <div class="flex-1">
+            <p class="text-gray-700 text-sm">
+              1100.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Button zum Bild wieder öffnen -->
+      <div 
+        x-show="!showImage" 
+        class="p-4 text-center"
+      >
+        <button 
+          @click="showImage = true"
+          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
+        >
+          anzeigen
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+<footer class="w-full bg-gray-900 text-gray-400 py-12 border-t border-gray-700 mt-16"
+        x-data="animatedFooterTitle()" 
+        x-init="observeFooter($el)">
+
+  <div class="max-w-5xl mx-auto px-6 flex flex-col items-center space-y-6">
+
+    <!-- Branding -->
+    <h2 class="font-mono text-xs sm:text-base tracking-wide select-none flex space-x-1">
+      <template x-for="(letter, index) in footerText.split('')" :key="index">
+        <span 
+          x-text="letter"
+          x-show="visible[index]"
+          x-transition:enter="transition ease-out duration-400"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          class="inline-block"
+        ></span>
+      </template>
+    </h2>
+
+    <!-- Navigation unter Branding -->
+    <nav class="flex space-x-8 text-sm font-light">
+      <a href="#" class="text-gray-400">Impressum</a>
+      <a href="#" class="text-gray-400">Datenschutz</a>
+    </nav>
+
+  </div>
+</footer>
+
+
+
+  <!-- Alpine.js Animationen -->
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('animatedTitle', () => ({
+        visible: [],
+        init() {
+          const letters = 'Asisza X'.split('');
+          this.visible = letters.map(() => false);
+          letters.forEach((_, i) => {
+            setTimeout(() => {
+              this.visible[i] = true;
+            }, i * 250);
+          });
+        }
+      }));
+
+      Alpine.data('animatedFooterTitle', () => ({
+        footerText: '© Asisza X. alle Rechte vorbehalten',
+        visible: [],
+        animationStarted: false,
+        init() {
+          // Setze alle Buchstaben unsichtbar, Animation startet erst beim Scrollen
+          this.visible = this.footerText.split('').map(() => false);
+        },
+        observeFooter(el) {
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting && !this.animationStarted) {
+                this.animationStarted = true;
+                this.footerText.split('').forEach((_, i) => {
+                  setTimeout(() => {
+                    this.visible[i] = true;
+                  }, i * 250);
+                });
+                observer.unobserve(el);
+              }
+            });
+          }, {
+            root: null,
+            threshold: 0.1
+          });
+          observer.observe(el);
+        }
+      }));
+    });
+  </script>
+
+</body>
+</html>

@@ -58,14 +58,14 @@
   </header>
 
   <!-- Projekte -->
-  <main class="w-full max-w-2xl px-6 space-y-16">
+  <main class="w-full max-w-5xl px-6 space-y-16">
     
     <!-- Projekt 1 -->
     <section 
       x-data="{ showInfo: false, showMore: false }"
       class="bg-neutral-900 rounded-2xl overflow-hidden shadow-lg border border-neutral-800"
     >
-      <img src="meee12.png" alt="Projekt 1" 
+      <img src="projekt1.jpg" alt="Projekt 1" 
         class="w-full h-64 object-cover cursor-pointer"
         @mouseenter="showInfo = true"
       >
@@ -76,10 +76,10 @@
           <h2 class="text-base sm:text-lg font-semibold uppercase tracking-wide">Landingpage für Startup</h2>
           <button 
             @click.stop="showMore = !showMore"
-            class="w-9 h-9 flex items-center justify-center rounded-lg bg-green-500 border-2 border-green-500 active:scale-95 transition-all duration-200"
+            class="w-9 h-9 flex items-center justify-center rounded-lg bg-green-500 text-neutral-900 font-bold hover:bg-green-400 active:bg-green-600 transition-colors duration-200"
           >
-            <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
-            <span x-show="showMore" class="text-lg leading-none text-white">−</span>
+            <span x-show="!showMore" class="text-lg leading-none">+</span>
+            <span x-show="showMore" class="text-lg leading-none">−</span>
           </button>
         </div>
       </div>
@@ -104,7 +104,7 @@
       x-data="{ showInfo: false, showMore: false }"
       class="bg-neutral-900 rounded-2xl overflow-hidden shadow-lg border border-neutral-800"
     >
-      <img src="landingpage2.jpg" alt="Projekt 2" 
+      <img src="projekt2.jpg" alt="Projekt 2" 
         class="w-full h-64 object-cover cursor-pointer"
         @mouseenter="showInfo = true"
       >
@@ -115,10 +115,10 @@
           <h2 class="text-base sm:text-lg font-semibold uppercase tracking-wide">Portfolio Website</h2>
           <button 
             @click.stop="showMore = !showMore"
-            class="w-9 h-9 flex items-center justify-center rounded-lg bg-green-500 border-2 border-green-500 active:scale-95 transition-all duration-200"
+            class="w-9 h-9 flex items-center justify-center rounded-lg bg-green-500 text-neutral-900 font-bold hover:bg-green-400 active:bg-green-600 transition-colors duration-200"
           >
-            <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
-            <span x-show="showMore" class="text-lg leading-none text-white">−</span>
+            <span x-show="!showMore" class="text-lg leading-none">+</span>
+            <span x-show="showMore" class="text-lg leading-none">−</span>
           </button>
         </div>
       </div>
@@ -142,7 +142,7 @@
       x-data="{ showInfo: false, showMore: false }"
       class="bg-neutral-900 rounded-2xl overflow-hidden shadow-lg border border-neutral-800"
     >
-      <img src="landingpage3.jpg" alt="Projekt 3" 
+      <img src="projekt3.jpg" alt="Projekt 3" 
         class="w-full h-64 object-cover cursor-pointer"
         @mouseenter="showInfo = true"
       >
@@ -153,10 +153,10 @@
           <h2 class="text-base sm:text-lg font-semibold uppercase tracking-wide">Dashboard UI</h2>
           <button 
             @click.stop="showMore = !showMore"
-            class="w-9 h-9 flex items-center justify-center rounded-lg bg-green-500 border-2 border-green-500 active:scale-95 transition-all duration-200"
+            class="w-9 h-9 flex items-center justify-center rounded-lg bg-green-500 text-neutral-900 font-bold hover:bg-green-400 active:bg-green-600 transition-colors duration-200"
           >
-            <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
-            <span x-show="showMore" class="text-lg leading-none text-white">−</span>
+            <span x-show="!showMore" class="text-lg leading-none">+</span>
+            <span x-show="showMore" class="text-lg leading-none">−</span>
           </button>
         </div>
       </div>

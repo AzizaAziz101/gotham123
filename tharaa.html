@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - Dein Name</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    /* Typografie im Stil von seyi.dev */
+    .headline {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      word-break: break-word;
+    }
+    @media (min-width: 640px) {
+      .headline {
+        font-size: 4rem;
+      }
+    }
+    .subheadline {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.125em;
+      text-transform: uppercase;
+      word-break: break-word;
+    }
+    @media (min-width: 640px) {
+      .subheadline {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body 
+  class="bg-neutral-950 flex flex-col items-center justify-start min-h-screen text-gray-200 font-sans" 
+  x-data="animatedTitle()" 
+  x-init="init()"
+>
+
+  <!-- Header mit animiertem Titel -->
+  <header class="w-full py-12 flex flex-col items-center px-4 text-center">
+    <h1 class="headline font-mono text-white mb-6 flex flex-wrap justify-center select-none">
+      <template x-for="(letter, index) in title.split('')" :key="index">
+        <span 
+          x-text="letter"
+          x-show="visible[index]"
+          x-transition:enter="transition ease-out duration-500"
+          x-transition:enter-start="opacity-0 scale-95"
+          x-transition:enter-end="opacity-100 scale-100"
+          class="inline-block"
+        ></span>
+      </template>
+    </h1>
+
+    <!-- Intro Text in Weiß -->
+    <p class="text-gray-200 font-mono mb-3 text-sm sm:text-base max-w-xl">
+      Willkommen in meinem Portfolio. Hier findest du ausgewählte Projekte, die meine Arbeit als Entwickler zeigen.
+    </p>
+
+    <!-- Subheadline -->
+    <p class="subheadline text-green-400 font-mono text-center">
+      Frontend Developer • HTML • TailwindCSS • JavaScript
+    </p>
+  </header>
+
+  <!-- Projekte -->
+  <main class="w-full max-w-2xl px-6 space-y-16">
+    
+    <!-- Projekt 1 -->
+    <section 
+      x-data="{ showInfo: false, showMore: false }"
+      class="bg-neutral-900 rounded-2xl overflow-hidden shadow-lg border border-neutral-800"
+    >
+      <img src="me.png" alt="Projekt 1" 
+        class="w-full h-64 object-cover cursor-pointer"
+        @mouseenter="showInfo = true"
+      >
+
+      <div class="overflow-hidden bg-neutral-800"
+        :class="showInfo ? 'max-h-40 p-6 transition-all duration-300' : 'max-h-0 p-0'">
+        <div class="flex justify-between items-center">
+          <h2 class="text-base sm:text-lg font-semibold uppercase tracking-wide">Landingpage für Startup</h2>
+          <button 
+            @click.stop="showMore = !showMore"
+            class="w-9 h-9 flex items-center justify-center rounded-lg bg-green-500 border-2 border-green-500 active:scale-95 transition-all duration-200"
+          >
+            <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
+            <span x-show="showMore" class="text-lg leading-none text-white">−</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-hidden bg-neutral-800"
+        :class="showMore ? 'max-h-screen p-6 transition-all duration-300' : 'max-h-0 p-0'">
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+          Eine moderne Landingpage für ein junges Startup. Fokus auf Responsiveness und schnelle Ladezeiten. 
+          Minimalistisches UI inspiriert von Tech-Webseiten.
+        </p>
+        <p class="text-xs text-gray-400 uppercase">Genutzte Technologien:</p>
+        <ul class="flex flex-wrap gap-2 mt-2 text-xs">
+          <li class="px-2 py-1 rounded bg-neutral-700 text-green-400">HTML</li>
+          <li class="px-2 py-1 rounded bg-neutral-700 text-green-400">TailwindCSS</li>
+          <li class="px-2 py-1 rounded bg-neutral-700 text-green-400">JavaScript</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projekt 2 -->
+    <section 
+      x-data="{ showInfo: false, showMore: false }"
+      class="bg-neutral-900 rounded-2xl overflow-hidden shadow-lg border border-neutral-800"
+    >
+      <img src="landingpage2.jpg" alt="Projekt 2" 
+        class="w-full h-64 object-cover cursor-pointer"
+        @mouseenter="showInfo = true"
+      >
+
+      <div class="overflow-hidden bg-neutral-800"
+        :class="showInfo ? 'max-h-40 p-6 transition-all duration-300' : 'max-h-0 p-0'">
+        <div class="flex justify-between items-center">
+          <h2 class="text-base sm:text-lg font-semibold uppercase tracking-wide">Portfolio Website</h2>
+          <button 
+            @click.stop="showMore = !showMore"
+            class="w-9 h-9 flex items-center justify-center rounded-lg bg-green-500 border-2 border-green-500 active:scale-95 transition-all duration-200"
+          >
+            <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
+            <span x-show="showMore" class="text-lg leading-none text-white">−</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-hidden bg-neutral-800"
+        :class="showMore ? 'max-h-screen p-6 transition-all duration-300' : 'max-h-0 p-0'">
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+          Eine persönliche Portfolio-Seite zur Präsentation meiner Projekte. Fokus auf dunkles, modernes Design und Animationen.
+        </p>
+        <p class="text-xs text-gray-400 uppercase">Genutzte Technologien:</p>
+        <ul class="flex flex-wrap gap-2 mt-2 text-xs">
+          <li class="px-2 py-1 rounded bg-neutral-700 text-green-400">HTML</li>
+          <li class="px-2 py-1 rounded bg-neutral-700 text-green-400">TailwindCSS</li>
+          <li class="px-2 py-1 rounded bg-neutral-700 text-green-400">Alpine.js</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projekt 3 -->
+    <section 
+      x-data="{ showInfo: false, showMore: false }"
+      class="bg-neutral-900 rounded-2xl overflow-hidden shadow-lg border border-neutral-800"
+    >
+      <img src="landingpage3.jpg" alt="Projekt 3" 
+        class="w-full h-64 object-cover cursor-pointer"
+        @mouseenter="showInfo = true"
+      >
+
+      <div class="overflow-hidden bg-neutral-800"
+        :class="showInfo ? 'max-h-40 p-6 transition-all duration-300' : 'max-h-0 p-0'">
+        <div class="flex justify-between items-center">
+          <h2 class="text-base sm:text-lg font-semibold uppercase tracking-wide">Dashboard UI</h2>
+          <button 
+            @click.stop="showMore = !showMore"
+            class="w-9 h-9 flex items-center justify-center rounded-lg bg-green-500 border-2 border-green-500 active:scale-95 transition-all duration-200"
+          >
+            <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
+            <span x-show="showMore" class="text-lg leading-none text-white">−</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-hidden bg-neutral-800"
+        :class="showMore ? 'max-h-screen p-6 transition-all duration-300' : 'max-h-0 p-0'">
+        <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+          Ein interaktives Dashboard mit Fokus auf Übersichtlichkeit. Responsive Layout und leichte Animationen.
+        </p>
+        <p class="text-xs text-gray-400 uppercase">Genutzte Technologien:</p>
+        <ul class="flex flex-wrap gap-2 mt-2 text-xs">
+          <li class="px-2 py-1 rounded bg-neutral-700 text-green-400">HTML</li>
+          <li class="px-2 py-1 rounded bg-neutral-700 text-green-400">TailwindCSS</li>
+          <li class="px-2 py-1 rounded bg-neutral-700 text-green-400">JavaScript</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-neutral-950 text-gray-500 py-12 border-t border-neutral-800 mt-20"
+        x-data="animatedFooterTitle()" 
+        x-init="observeFooter($el)">
+
+    <div class="max-w-5xl mx-auto px-6 flex flex-col items-center space-y-6">
+
+      <h2 class="font-mono text-sm sm:text-base tracking-widest select-none flex flex-wrap justify-center text-gray-400 uppercase text-center">
+        <template x-for="(letter, index) in footerText.split('')" :key="index">
+          <span 
+            x-text="letter"
+            x-show="visible[index]"
+            x-transition:enter="transition ease-out duration-400"
+            x-transition:enter-start="opacity-0 translate-y-1"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            class="inline-block"
+          ></span>
+        </template>
+      </h2>
+
+      <nav class="flex flex-wrap justify-center gap-6 text-xs font-light tracking-widest uppercase">
+        <a href="#" class="text-gray-400 hover:text-green-400 transition">Impressum</a>
+        <a href="#" class="text-gray-400 hover:text-green-400 transition">Datenschutz</a>
+      </nav>
+
+    </div>
+  </footer>
+
+  <!-- Alpine.js Animationen -->
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('animatedTitle', () => ({
+        title: 'Dein Portfolio',
+        visible: [],
+        init() {
+          const letters = this.title.split('');
+          this.visible = letters.map(() => false);
+          letters.forEach((_, i) => {
+            setTimeout(() => {
+              this.visible[i] = true;
+            }, i * 120);
+          });
+        }
+      }));
+
+      Alpine.data('animatedFooterTitle', () => ({
+        footerText: '© Dein Name. Alle Rechte vorbehalten',
+        visible: [],
+        animationStarted: false,
+        init() {
+          this.visible = this.footerText.split('').map(() => false);
+        },
+        observeFooter(el) {
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting && !this.animationStarted) {
+                this.animationStarted = true;
+                this.footerText.split('').forEach((_, i) => {
+                  setTimeout(() => {
+                    this.visible[i] = true;
+                  }, i * 100);
+                });
+                observer.unobserve(el);
+              }
+            });
+          }, { root: null, threshold: 0.1 });
+          observer.observe(el);
+        }
+      }));
+    });
+  </script>
+</body>
+</html>

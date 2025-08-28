@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
-    /* Typografie */
+    /* Typografie angelehnt an vercel.com */
     .headline {
       font-size: 2rem;
       font-weight: 600;
@@ -28,18 +28,6 @@
       .subheadline {
         font-size: 1.125rem;
       }
-    }
-    /* Eleganter Fade-In Effekt */
-    .fade-section {
-      opacity: 0;
-      transform: translateY(20px);
-      filter: blur(8px);
-      transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .fade-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
     }
   </style>
 </head>
@@ -68,11 +56,11 @@
       Willkommen in meinem Portfolio. Ausgewählte Projekte, modernes UI, klare Strukturen.
     </p>
 
+    <!-- Neuer längerer Text -->
     <p class="max-w-2xl text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
-      Mein Fokus liegt auf minimalistischem, funktionalem Design, inspiriert von modernen Tech-Webseiten. 
-      Saubere Typografie, fließende Animationen und eine klare Informationsarchitektur schaffen ein Erlebnis, 
-      das gleichzeitig elegant und zugänglich ist. Dabei setze ich bewusst auf Performance und schlanken Code, 
-      um Benutzerfreundlichkeit mit einer hochwertigen visuellen Ästhetik zu verbinden.
+      Design trifft auf Funktionalität – jedes Projekt wurde mit Fokus auf <span class="text-gray-200">Performance, Lesbarkeit und Nutzerfreundlichkeit</span> entwickelt. 
+      Minimalistische Layouts, sanfte Animationen und ein konsequent dunkles Farbschema schaffen eine klare, aufgeräumte Atmosphäre. 
+      Mein Ansatz verbindet technisches Know-how mit einem Gespür für Ästhetik, inspiriert von modernen Tech-Brands und cleanem UI-Design.
     </p>
 
     <p class="text-sm sm:text-base text-gray-400 font-mono">
@@ -82,21 +70,25 @@
 
   <!-- Projekte -->
   <main class="w-full max-w-5xl px-6 space-y-20">
-
+    
     <!-- Projekt 1 -->
     <section 
-      x-data="fadeInOnScroll(0)" 
+      x-data="fadeInOnScroll()" 
       x-init="observe($el)" 
-      :class="visible ? 'fade-section visible' : 'fade-section'"
-      class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-700"
+      x-show="visible"
+      x-transition:enter="transition duration-700 ease-out"
+      x-transition:enter-start="opacity-0 translate-y-6"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      class="opacity-0 group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden transition hover:border-neutral-700"
     >
       <img src="me.png" alt="Projekt 1" class="w-full h-72 object-cover">
 
-      <div class="p-8" x-data="{ showMore: false }">
+      <div class="p-8">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-white">Landingpage für Startup</h2>
           <button 
             @click="showMore = !showMore"
+            x-data="{ showMore: false }"
             class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
           >
             <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
@@ -122,18 +114,22 @@
 
     <!-- Projekt 2 -->
     <section 
-      x-data="fadeInOnScroll(200)" 
+      x-data="fadeInOnScroll()" 
       x-init="observe($el)" 
-      :class="visible ? 'fade-section visible' : 'fade-section'"
-      class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-700"
+      x-show="visible"
+      x-transition:enter="transition duration-700 ease-out"
+      x-transition:enter-start="opacity-0 translate-y-6"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      class="opacity-0 group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden transition hover:border-neutral-700"
     >
       <img src="landingpage2.jpg" alt="Projekt 2" class="w-full h-72 object-cover">
 
-      <div class="p-8" x-data="{ showMore: false }">
+      <div class="p-8">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-white">Portfolio Website</h2>
           <button 
             @click="showMore = !showMore"
+            x-data="{ showMore: false }"
             class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
           >
             <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
@@ -159,18 +155,22 @@
 
     <!-- Projekt 3 -->
     <section 
-      x-data="fadeInOnScroll(400)" 
+      x-data="fadeInOnScroll()" 
       x-init="observe($el)" 
-      :class="visible ? 'fade-section visible' : 'fade-section'"
-      class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-700"
+      x-show="visible"
+      x-transition:enter="transition duration-700 ease-out"
+      x-transition:enter-start="opacity-0 translate-y-6"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      class="opacity-0 group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden transition hover:border-neutral-700"
     >
       <img src="landingpage3.jpg" alt="Projekt 3" class="w-full h-72 object-cover">
 
-      <div class="p-8" x-data="{ showMore: false }">
+      <div class="p-8">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-white">Dashboard UI</h2>
           <button 
             @click="showMore = !showMore"
+            x-data="{ showMore: false }"
             class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
           >
             <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
@@ -266,19 +266,17 @@
         }
       }));
 
-      Alpine.data('fadeInOnScroll', (delay = 0) => ({
+      Alpine.data('fadeInOnScroll', () => ({
         visible: false,
         observe(el) {
           const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
-                setTimeout(() => {
-                  this.visible = true;
-                }, delay);
-                observer.unobserve(el);
+                this.visible = true;
+                observer.unobserve(el); // nur einmal abspielen
               }
             });
-          }, { threshold: 0.75 }); // späterer Start: 75% sichtbar
+          }, { threshold: 0.2 });
           observer.observe(el);
         }
       }));

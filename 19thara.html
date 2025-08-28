@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
-    /* Typografie */
+    /* Typografie angelehnt an vercel.com */
     .headline {
       font-size: 2rem;
       font-weight: 600;
@@ -28,18 +28,6 @@
       .subheadline {
         font-size: 1.125rem;
       }
-    }
-    /* Eleganter Fade-In Effekt */
-    .fade-section {
-      opacity: 0;
-      transform: translateY(20px);
-      filter: blur(8px);
-      transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .fade-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
     }
   </style>
 </head>
@@ -68,13 +56,6 @@
       Willkommen in meinem Portfolio. Ausgewählte Projekte, modernes UI, klare Strukturen.
     </p>
 
-    <p class="max-w-2xl text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
-      Mein Fokus liegt auf minimalistischem, funktionalem Design, inspiriert von modernen Tech-Webseiten. 
-      Saubere Typografie, fließende Animationen und eine klare Informationsarchitektur schaffen ein Erlebnis, 
-      das gleichzeitig elegant und zugänglich ist. Dabei setze ich bewusst auf Performance und schlanken Code, 
-      um Benutzerfreundlichkeit mit einer hochwertigen visuellen Ästhetik zu verbinden.
-    </p>
-
     <p class="text-sm sm:text-base text-gray-400 font-mono">
       Frontend Developer • HTML • TailwindCSS • JavaScript
     </p>
@@ -82,17 +63,17 @@
 
   <!-- Projekte -->
   <main class="w-full max-w-5xl px-6 space-y-20">
-
+    
     <!-- Projekt 1 -->
     <section 
-      x-data="fadeInOnScroll(0)" 
-      x-init="observe($el)" 
-      :class="visible ? 'fade-section visible' : 'fade-section'"
-      class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-700"
+      x-data="{ showMore: false }"
+      class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden transition hover:border-neutral-700"
     >
-      <img src="me.png" alt="Projekt 1" class="w-full h-72 object-cover">
+      <img src="me.png" alt="Projekt 1" 
+        class="w-full h-72 object-cover"
+      >
 
-      <div class="p-8" x-data="{ showMore: false }">
+      <div class="p-8">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-white">Landingpage für Startup</h2>
           <button 
@@ -111,9 +92,9 @@
           <div>
             <p class="text-xs text-gray-500 uppercase">Genutzte Technologien:</p>
             <ul class="flex flex-wrap gap-2 mt-2 text-xs">
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">HTML</li>
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">TailwindCSS</li>
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">JavaScript</li>
+              <li class="px-2 py-1 rounded bg-neutral-800 text-white">HTML</li>
+              <li class="px-2 py-1 rounded bg-neutral-800 text-white">TailwindCSS</li>
+              <li class="px-2 py-1 rounded bg-neutral-800 text-white">JavaScript</li>
             </ul>
           </div>
         </div>
@@ -122,14 +103,14 @@
 
     <!-- Projekt 2 -->
     <section 
-      x-data="fadeInOnScroll(200)" 
-      x-init="observe($el)" 
-      :class="visible ? 'fade-section visible' : 'fade-section'"
-      class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-700"
+      x-data="{ showMore: false }"
+      class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden transition hover:border-neutral-700"
     >
-      <img src="landingpage2.jpg" alt="Projekt 2" class="w-full h-72 object-cover">
+      <img src="landingpage2.jpg" alt="Projekt 2" 
+        class="w-full h-72 object-cover"
+      >
 
-      <div class="p-8" x-data="{ showMore: false }">
+      <div class="p-8">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-white">Portfolio Website</h2>
           <button 
@@ -148,9 +129,9 @@
           <div>
             <p class="text-xs text-gray-500 uppercase">Genutzte Technologien:</p>
             <ul class="flex flex-wrap gap-2 mt-2 text-xs">
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">HTML</li>
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">TailwindCSS</li>
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">Alpine.js</li>
+              <li class="px-2 py-1 rounded bg-neutral-800 text-white">HTML</li>
+              <li class="px-2 py-1 rounded bg-neutral-800 text-white">TailwindCSS</li>
+              <li class="px-2 py-1 rounded bg-neutral-800 text-white">Alpine.js</li>
             </ul>
           </div>
         </div>
@@ -159,14 +140,14 @@
 
     <!-- Projekt 3 -->
     <section 
-      x-data="fadeInOnScroll(400)" 
-      x-init="observe($el)" 
-      :class="visible ? 'fade-section visible' : 'fade-section'"
-      class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-700"
+      x-data="{ showMore: false }"
+      class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden transition hover:border-neutral-700"
     >
-      <img src="landingpage3.jpg" alt="Projekt 3" class="w-full h-72 object-cover">
+      <img src="landingpage3.jpg" alt="Projekt 3" 
+        class="w-full h-72 object-cover"
+      >
 
-      <div class="p-8" x-data="{ showMore: false }">
+      <div class="p-8">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-white">Dashboard UI</h2>
           <button 
@@ -185,9 +166,9 @@
           <div>
             <p class="text-xs text-gray-500 uppercase">Genutzte Technologien:</p>
             <ul class="flex flex-wrap gap-2 mt-2 text-xs">
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">HTML</li>
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">TailwindCSS</li>
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">JavaScript</li>
+              <li class="px-2 py-1 rounded bg-neutral-800 text-white">HTML</li>
+              <li class="px-2 py-1 rounded bg-neutral-800 text-white">TailwindCSS</li>
+              <li class="px-2 py-1 rounded bg-neutral-800 text-white">JavaScript</li>
             </ul>
           </div>
         </div>
@@ -262,23 +243,6 @@
               }
             });
           }, { root: null, threshold: 0.1 });
-          observer.observe(el);
-        }
-      }));
-
-      Alpine.data('fadeInOnScroll', (delay = 0) => ({
-        visible: false,
-        observe(el) {
-          const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                setTimeout(() => {
-                  this.visible = true;
-                }, delay);
-                observer.unobserve(el);
-              }
-            });
-          }, { threshold: 0.75 }); // späterer Start: 75% sichtbar
           observer.observe(el);
         }
       }));

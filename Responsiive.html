@@ -312,25 +312,19 @@
 
   <!-- Alpine.js Title Animation -->
   <script>
-    
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('animatedTitle', () => ({
-      title: '19thara.com',
-      visible: [],
-      init() {
-        const letters = this.title.split('');
-        this.visible = letters.map(() => false);
-        letters.forEach((_, i) => {
-          setTimeout(() => {
-            this.visible[i] = true;
-          }, i * 100);
-        });
+    function animatedTitle() {
+      return {
+        title: "19thara.com",
+        visible: [],
+        init() {
+          this.visible = Array(this.title.length).fill(false);
+          [...this.title].forEach((_, i) => {
+            setTimeout(() => this.visible[i] = true, i * 80);
+          });
+        }
       }
-    }));
-  });
-</script>
-
-  
+    }
+  </script>
 
 </body>
 </html>

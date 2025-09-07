@@ -82,196 +82,151 @@
   </header>
 
   <!-- Projekte -->
-   <main class="max-w-5xl mx-auto px-6 space-y-20">
+  <main class="max-w-5xl mx-auto px-6 space-y-20">
 
 
-<section 
-  x-data="{ showMore: false, showIframe: false }" 
-  x-init="observe($el)"
-  :class="visible ? 'fade-section visible' : 'fade-section'"
-  class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-700"
->
-  <img src="me.png" alt="Projekt 1" class="w-full h-72 object-cover">
-
-  <div class="p-8">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-white">Landingpage für Startup</h2>
-      <button 
-        @click="showMore = !showMore"
-        class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
-      >
-        <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
-        <span x-show="showMore" class="text-lg leading-none text-white">−</span>
-      </button>
-    </div>
-
-    <div x-show="showMore" x-transition class="space-y-4">
-      <p class="text-gray-300 text-sm leading-relaxed">
-        Eine persönliche Portfolio-Seite zur Präsentation meiner Projekte. Dunkles, modernes Design und dezente Animationen.
-      </p>
-      <div>
-        <p class="text-xs text-gray-500 uppercase">Genutzte Technologien:</p>
-        <ul class="flex flex-wrap gap-2 mt-2 text-xs">
-          <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">HTML</li>
-          <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">TailwindCSS</li>
-          <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">JavaScript</li>
-        </ul>
+    <!-- Projekt 1 -->
+    <section 
+      x-data="{ showMore: false, iframeVisible: false }"
+      x-init="$watch('showMore', val => { if(val) iframeVisible = true })"
+      x-data="fadeInOnScroll(0)" 
+      x-init="observe($el)" 
+      :class="visible ? 'fade-section visible' : 'fade-section'"
+      class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-700"
+    >
+      <!-- Vorschau-Bild oder Iframe -->
+      <div @click="iframeVisible = true" class="cursor-pointer">
+        <template x-if="!iframeVisible">
+          <img src="me.png" alt="Projekt 1" class="w-full h-72 object-cover">
+        </template>
+        <template x-if="iframeVisible">
+          <iframe id="iframe1" src="sadig.html" class="w-full h-72 border-none" allowfullscreen></iframe>
+        </template>
       </div>
 
-      <!-- Button für Iframe Modal -->
-      <button 
-        @click="showIframe = true" 
-        class="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg shadow-md transition">
-        Projekt ansehen
-      </button>
-
-    </div>
-  </div>
-
-  <!-- Shadow Box direkt in Section -->
-  <div 
-    x-show="showIframe"
-    x-transition
-    class="absolute top-0 left-0 w-full h-full z-50 bg-black/80"
-  >
-    <div class="bg-neutral-900 w-full h-full flex flex-col">
-      <!-- Header -->
-      <div class="flex justify-between items-center px-3 py-2 border-b border-neutral-800">
-        <h3 class="text-white text-sm font-medium">Projekt Vorschau</h3>
-        <div class="flex gap-2">
-          <button 
-            @click="document.getElementById('projectIframe').requestFullscreen()" 
-            class="px-3 py-1 bg-white/10 hover:bg-white/20 text-white text-xs rounded-md transition"
-          >
-            Fullscreen
-          </button>
-          <button 
-            @click="showIframe = false" 
-            class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-xs rounded-md transition"
-          >
-            Schließen
-          </button>
+      <div class="p-8">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-white">Landingpage für Startup</h2>
+          <div class="flex gap-2">
+            <!-- Fullscreen Button -->
+            <button 
+              @click="document.querySelector('#iframe1')?.requestFullscreen()"
+              class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
+              title="Fullscreen"
+            >⛶</button>
+            <!-- Show More Button -->
+            <button 
+              @click="showMore = !showMore"
+              class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
+            >
+              <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
+              <span x-show="showMore" class="text-lg leading-none text-white">−</span>
+            </button>
+          </div>
+        </div>
+        <div x-show="showMore" x-transition class="space-y-4">
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Eine persönliche Portfolio-Seite zur Präsentation meiner Projekte. Dunkles, modernes Design und dezente Animationen.
+          </p>
         </div>
       </div>
+    </section>
 
-      <!-- Iframe -->
-      <iframe 
-        id="projectIframe"
-        src="10000.html"
-        class="w-full flex-1 border-0"
-      ></iframe>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-    <p class="subheadline max-w-xl mb-3">
-      Willkommen in meinem Portfolio. Ausgewählte Projekte, modernes UI, klare Strukturen.
-    </p>
-
-    <p class="max-w-2xl text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
-      Mein Fokus liegt auf minimalistischem, funktionalem Design, inspiriert von modernen Tech-Webseiten. 
-      Saubere Typografie, fließende Animationen und eine klare Informationsarchitektur schaffen ein Erlebnis, 
-      das gleichzeitig elegant und zugänglich ist. Dabei setze ich bewusst auf Performance und schlanken Code, 
-      um Benutzerfreundlichkeit mit einer hochwertigen visuellen Ästhetik zu verbinden.
-    </p>
 
     <!-- Projekt 2 -->
     <section 
+      x-data="{ showMore: false, iframeVisible: false }"
+      x-init="$watch('showMore', val => { if(val) iframeVisible = true })"
       x-data="fadeInOnScroll(200)" 
       x-init="observe($el)" 
       :class="visible ? 'fade-section visible' : 'fade-section'"
       class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-700"
     >
-      <img src="landingpage2.jpg" alt="Projekt 2" class="w-full h-72 object-cover">
+      <div @click="iframeVisible = true" class="cursor-pointer">
+        <template x-if="!iframeVisible">
+          <img src="landingpage2.jpg" alt="Projekt 2" class="w-full h-72 object-cover">
+        </template>
+        <template x-if="iframeVisible">
+          <iframe id="iframe2" src="10000.html" class="w-full h-72 border-none" allowfullscreen></iframe>
+        </template>
+      </div>
 
-      <div class="p-8" x-data="{ showMore: false }">
+      <div class="p-8">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-white">Portfolio Website</h2>
-          <button 
-            @click="showMore = !showMore"
-            class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
-          >
-            <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
-            <span x-show="showMore" class="text-lg leading-none text-white">−</span>
-          </button>
+          <div class="flex gap-2">
+            <!-- Fullscreen Button -->
+            <button 
+              @click="document.querySelector('#iframe2')?.requestFullscreen()"
+              class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
+              title="Fullscreen"
+            >⛶</button>
+            <!-- Show More Button -->
+            <button 
+              @click="showMore = !showMore"
+              class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
+            >
+              <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
+              <span x-show="showMore" class="text-lg leading-none text-white">−</span>
+            </button>
+          </div>
         </div>
-
         <div x-show="showMore" x-transition class="space-y-4">
           <p class="text-gray-300 text-sm leading-relaxed">
             Eine persönliche Portfolio-Seite zur Präsentation meiner Projekte. Dunkles, modernes Design und dezente Animationen.
           </p>
-          <div>
-            <p class="text-xs text-gray-500 uppercase">Genutzte Technologien:</p>
-            <ul class="flex flex-wrap gap-2 mt-2 text-xs">
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">HTML</li>
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">TailwindCSS</li>
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">Alpine.js</li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
 
-    <p class="subheadline max-w-xl mb-3">
-      Willkommen in meinem Portfolio. Ausgewählte Projekte, modernes UI, klare Strukturen.
-    </p>
-
-    <p class="max-w-2xl text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
-      Mein Fokus liegt auf minimalistischem, funktionalem Design, inspiriert von modernen Tech-Webseiten. 
-      Saubere Typografie, fließende Animationen und eine klare Informationsarchitektur schaffen ein Erlebnis, 
-      das gleichzeitig elegant und zugänglich ist. Dabei setze ich bewusst auf Performance und schlanken Code, 
-      um Benutzerfreundlichkeit mit einer hochwertigen visuellen Ästhetik zu verbinden.
-    </p>
 
     <!-- Projekt 3 -->
     <section 
+      x-data="{ showMore: false, iframeVisible: false }"
+      x-init="$watch('showMore', val => { if(val) iframeVisible = true })"
       x-data="fadeInOnScroll(400)" 
       x-init="observe($el)" 
       :class="visible ? 'fade-section visible' : 'fade-section'"
       class="group relative bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden hover:border-neutral-700"
     >
-      <img src="landingpage3.jpg" alt="Projekt 3" class="w-full h-72 object-cover">
+      <div @click="iframeVisible = true" class="cursor-pointer">
+        <template x-if="!iframeVisible">
+          <img src="landingpage3.jpg" alt="Projekt 3" class="w-full h-72 object-cover">
+        </template>
+        <template x-if="iframeVisible">
+          <iframe id="iframe3" src="Hayat.html" class="w-full h-72 border-none" allowfullscreen></iframe>
+        </template>
+      </div>
 
-      <div class="p-8" x-data="{ showMore: false }">
+      <div class="p-8">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-white">Dashboard UI</h2>
-          <button 
-            @click="showMore = !showMore"
-            class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
-          >
-            <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
-            <span x-show="showMore" class="text-lg leading-none text-white">−</span>
-          </button>
+          <div class="flex gap-2">
+            <!-- Fullscreen Button -->
+            <button 
+              @click="document.querySelector('#iframe3')?.requestFullscreen()"
+              class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
+              title="Fullscreen"
+            >⛶</button>
+            <!-- Show More Button -->
+            <button 
+              @click="showMore = !showMore"
+              class="w-9 h-9 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-white/20 active:scale-95 transition"
+            >
+              <span x-show="!showMore" class="text-lg leading-none text-white">+</span>
+              <span x-show="showMore" class="text-lg leading-none text-white">−</span>
+            </button>
+          </div>
         </div>
-
         <div x-show="showMore" x-transition class="space-y-4">
           <p class="text-gray-300 text-sm leading-relaxed">
             Eine persönliche Portfolio-Seite zur Präsentation meiner Projekte. Dunkles, modernes Design und dezente Animationen.
           </p>
-          <div>
-            <p class="text-xs text-gray-500 uppercase">Genutzte Technologien:</p>
-            <ul class="flex flex-wrap gap-2 mt-2 text-xs">
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">HTML</li>
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">TailwindCSS</li>
-              <li class="px-2 py-1 rounded bg-neutral-800 text-purple-400">JavaScript</li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
 
-    </main>
-
-    <div class="flex justify-center px-4">
-   <p class="max-w-2xl text-center text-gray-400 text-sm sm:text-base leading-relaxed mt-24 mb-0">
-    UX Design aus Berlin. Treten sie mit mir in Kontakt, ich setze ihre Ideen visuell um. Der freundliche Developer von nebenan.
-   </p>
-  </div>
-
+  </main>
 
   <!-- Footer -->
   <footer class="w-full bg-black text-gray-500 py-16 border-t border-neutral-800 mt-24"
@@ -355,7 +310,7 @@
                 observer.unobserve(el);
               }
             });
-          }, { threshold: 0.50 }); // späterer Start: 50% sichtbar
+          }, { threshold: 0.50 });
           observer.observe(el);
         }
       }));
@@ -363,3 +318,4 @@
   </script>
 </body>
 </html>
+

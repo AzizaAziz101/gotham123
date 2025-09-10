@@ -172,82 +172,66 @@
   
     
     <!-- Zweite Projekt Card -->
-<section 
-  x-data="{ showMore: false, showIframe: false, iframeLoaded: false }" 
-  class="relative bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden shadow-sm"
+    <section 
+      x-data="{ showMore: false, showIframe: false }" 
+      class="relative bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden shadow-sm"
+    >
+      <img src="selbst.png" alt="Projekt 2" class="w-full h-56 sm:h-72 object-cover">
+
+      <div class="p-6 sm:p-8">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-lg sm:text-xl font-medium text-gray-900">Selbstprojekt <span class="text-sm text-gray-500">· 07/2025</span>
+</h2>
+          <button 
+  @click="showMore = !showMore; $el.classList.add('bg-gray-200', 'text-gray-900')"
+  class="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 text-gray-700 transition-colors duration-300"
 >
-  <img src="selbst.png" alt="Projekt 2" class="w-full h-56 sm:h-72 object-cover">
+  <span x-show="!showMore">+</span>
+  <span x-show="showMore">−</span>
+</button>
+        </div>
 
-  <div class="p-6 sm:p-8">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-lg sm:text-xl font-medium text-gray-900">
-        Selbstprojekt <span class="text-sm text-gray-500">· 07/2025</span>
-      </h2>
-      <button 
-        @click="showMore = !showMore; $el.classList.add('bg-gray-200', 'text-gray-900')"
-        class="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 text-gray-700 transition-colors duration-300"
-      >
-        <span x-show="!showMore">+</span>
-        <span x-show="showMore">−</span>
-      </button>
-    </div>
-
-    <div x-show="showMore" x-transition class="space-y-4 text-sm text-gray-600">
-      <p>
-        Ein eigenständiges Projekt zur Weiterentwicklung meiner UI-Fähigkeiten. Thema: Erfüllt sein, creating your reality. Webpage Template 002
-      </p>
-      <div>
-        <ul class="flex flex-wrap gap-2 mt-2 text-xs">
-          <li class="px-2 py-1 rounded bg-gray-100 text-gray-700">HTML</li>
-          <li class="px-2 py-1 rounded bg-gray-100 text-gray-700">TailwindCSS</li>
-          <li class="px-2 py-1 rounded bg-gray-100 text-gray-700">JavaScript</li>
-        </ul>
+        <div x-show="showMore" x-transition class="space-y-4 text-sm text-gray-600">
+          <p>
+            Ein eigenständiges Projekt zur Weiterentwicklung meiner UI-Fähigkeiten. Thema: Erfüllt sein, creating your reality. Webpage Template 002
+          </p>
+          <div>
+            
+            <ul class="flex flex-wrap gap-2 mt-2 text-xs">
+              <li class="px-2 py-1 rounded bg-gray-100 text-gray-700">HTML</li>
+              <li class="px-2 py-1 rounded bg-gray-100 text-gray-700">TailwindCSS</li>
+              <li class="px-2 py-1 rounded bg-gray-100 text-gray-700">JavaScript</li>
+            </ul>
+          </div>
+          <button 
+            @click="showIframe = true" 
+            class="mt-4 px-4 py-2 bg-gray-900 hover:bg-black text-white rounded-lg shadow transition">
+            Projekt ansehen
+          </button>
+        </div>
       </div>
-      <button 
-        @click="
-          showIframe = true;
-          iframeLoaded = false;
-          $nextTick(() => {
-            $refs.projectIframe.src = 'https://selbst.vercel.app/';
-          })
-        "
-        class="mt-4 px-4 py-2 bg-gray-900 hover:bg-black text-white rounded-lg shadow transition"
-      >
-        Projekt ansehen
-      </button>
-    </div>
-  </div>
 
-  <div 
-    x-show="showIframe" 
-    x-cloak
-    x-transition
-    class="fixed inset-0 z-50 flex flex-col bg-white"
-    x-init="$watch('showIframe', value => { 
-      document.body.classList.toggle('overflow-hidden', value);
-      if (!value) iframeLoaded = false;
-    })"
-  >
-    <div class="flex justify-between items-center px-4 py-2 bg-gray-50 border-b border-gray-200">
-      <h3 class="text-gray-900 text-sm font-medium">Projekt Vorschau</h3>
-      <button 
-        @click="showIframe = false" 
-        class="px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-xs rounded-md transition"
+      <div 
+        x-show="showIframe"
+        x-cloak
+        x-transition
+        class="fixed inset-0 z-50 flex flex-col bg-white"
+        x-init="$watch('showIframe', value => { 
+    document.body.classList.toggle('overflow-hidden', value) 
+  })"
       >
-        Schließen
-      </button>
-    </div>
-    <!-- iframe wird erst angezeigt, wenn es geladen ist -->
-    <iframe 
-      x-ref="projectIframe" 
-      x-show="iframeLoaded" 
-      @load="iframeLoaded = true" 
-      src="" 
-      class="w-full flex-1 border-0"
-    ></iframe>
-  </div>
-</section>
-
+        <div class="flex justify-between items-center px-4 py-2 bg-gray-50 border-b border-gray-200">
+          <h3 class="text-gray-900 text-sm font-medium">Projekt Vorschau</h3>
+          <button 
+            @click="showIframe = false" 
+            class="px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-xs rounded-md transition"
+          >
+            Schließen
+          </button>
+        </div>
+        <iframe src="https://selbst.vercel.app/" class="w-full flex-1 border-0"></iframe>
+      </div>
+    </section>
 
 
     <!-- Textabschnitt 3 -->
@@ -370,5 +354,3 @@
 
 </body>
 </html>
-
-

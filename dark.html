@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone-Style Hintergrund</title>
+<style>
+  /* Vollbild-Hintergrund */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000; /* Fallback-Farbe */
+  }
+
+  /* Farbverlaufshintergrund */
+  .background {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, #ff5f6d, #ffc371, #47caff, #6a0dad);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    z-index: -1;
+    border-radius: 50%;
+  }
+
+  /* Animation des Farbverlaufs */
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Abstrakte Blasen */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatBubble 20s linear infinite;
+  }
+
+  @keyframes floatBubble {
+    0% { transform: translateY(100vh) scale(0.5); }
+    100% { transform: translateY(-150vh) scale(1); }
+  }
+
+  /* Verschiedene Blasen erstellen */
+  .bubble:nth-child(1) {
+    width: 200px; height: 200px;
+    background: rgba(255, 255, 255, 0.2);
+    left: 10%;
+    animation-duration: 18s;
+  }
+
+  .bubble:nth-child(2) {
+    width: 300px; height: 300px;
+    background: rgba(255, 255, 255, 0.15);
+    left: 70%;
+    animation-duration: 25s;
+  }
+
+  .bubble:nth-child(3) {
+    width: 150px; height: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    left: 40%;
+    animation-duration: 22s;
+  }
+
+</style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</body>
+</html>

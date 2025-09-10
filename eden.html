@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mystischer statischer Flüssigkeits-Scroll</title>
+<style>
+:root{
+  --bg-dark: #05050a;          /* fast schwarz */
+  --accent-turquoise: #6ee7b7; /* helles Türkis */
+  --accent-purple: #8b5cf6;    /* Lila */
+}
+
+/* Body und Scrollbereich */
+html, body{
+  margin:0;
+  padding:0;
+  min-height:400vh; /* 4 Bildschirmhöhen */
+  background: linear-gradient(180deg, var(--bg-dark) 0%, #0a0a15 100%);
+  overflow-x:hidden;
+  font-family: Inter, sans-serif;
+  position: relative;
+}
+
+/* Subtile Nebel-/Farbschichten für Tiefe */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(1200px 800px at 20% 10%, rgba(110,231,183,0.02), transparent 85%),
+    radial-gradient(1000px 600px at 80% 25%, rgba(139,92,246,0.02), transparent 85%),
+    radial-gradient(800px 500px at 50% 70%, rgba(255,255,255,0.01), transparent 85%);
+  mix-blend-mode: screen;
+  filter: blur(60px) saturate(110%);
+  z-index:0;
+}
+
+/* Container für Blobs */
+.liquid-layer{
+  position:absolute;
+  width: 100%;
+  min-height: 400vh;
+  top:0;
+  left:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:1;
+}
+
+/* Blobs / Pools */
+.blob{
+  position:absolute;
+  border-radius: 50%;
+  filter: blur(100px) contrast(1.05);
+  mix-blend-mode: screen;
+  opacity:0.6;
+}
+
+/* Responsive Anpassung */
+@media(max-width:900px){
+  .blob{ filter: blur(70px); }
+}
+</style>
+</head>
+<body>
+
+<div class="liquid-layer">
+  <!-- große Blobs -->
+  <div class="blob" style="width:600px; height:400px; top:200px; left:10%; background:radial-gradient(circle, var(--accent-turquoise), transparent 90%);"></div>
+  <div class="blob" style="width:500px; height:350px; top:1200px; left:60%; background:radial-gradient(circle, var(--accent-purple), transparent 90%);"></div>
+  <div class="blob" style="width:700px; height:500px; top:2500px; left:30%; background:radial-gradient(circle, var(--accent-turquoise), transparent 85%);"></div>
+
+  <!-- weitere Blobs für Tiefe -->
+  <div class="blob" style="width:400px; height:300px; top:800px; left:40%; background:radial-gradient(circle, var(--accent-purple), transparent 90%);"></div>
+  <div class="blob" style="width:350px; height:250px; top:2000px; left:15%; background:radial-gradient(circle, var(--accent-turquoise), transparent 90%);"></div>
+  <div class="blob" style="width:450px; height:300px; top:3200px; left:55%; background:radial-gradient(circle, var(--accent-purple), transparent 85%);"></div>
+</div>
+
+</body>
+</html>
